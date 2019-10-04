@@ -16,9 +16,9 @@ class PostsController < ApplicationController
     def create
         # render plain: params[:post].inspect
         @post = Post.new(post_params)
-
-        if(@post.save)
-            redirect_to @post
+        @mPost = Post.modify_post(@post)
+        if(@mPost.save)
+            redirect_to @mPost
         else
             render 'new'
         end
